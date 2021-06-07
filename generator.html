@@ -36,7 +36,6 @@
             }
         </style>
     </head>
-    
     <body onload="brython()">
         <textarea id="codes" class="codes" rows="20" cols="80"></textarea>
         <button id='compile-btn'>컴파일</button>
@@ -100,8 +99,6 @@
 
         <script>
             var resizeDetection_RESULT = function() {
-                console.log($('#compile-result').height())
-                console.log($(window).height() * 0.4)
                 if ($('#compile-result').height() > $(window).height() * 0.4) {
                     $('#compile-result').css('resize', 'none')
                     $('#compile-result').height($(window).height() * 0.4)
