@@ -8,6 +8,8 @@ def command_convert(string):
 def inital_command_convert(string):
     return string.replace('\\"', '\\\\"').replace('"', '\\"')
 
+inital_command.append(r'gamerule commandBlockOutput false')
+
 while True:
     commands.append(input())
     if commands[-1].startswith('INIT:'):
@@ -40,7 +42,7 @@ for command in commands2:
 for init_command in inital_command:
     result += ',{id:"command_block_minecart",Command:"%s"}' %(inital_command_convert(init_command))
     
-result = 'summon falling_block ~ ~1 ~ {BlockState:{Name:"stone"},Time:100,Passengers:[{id:"falling_block",BlockState:{Name:"sand"},Time:0,DropItem:0b,HurtEntities:0b,Passengers:[{id:"falling_block",BlockState:{Name:"redstone_block"},Time:100,Passengers:[{id:"falling_block",BlockState:{Name:"sand"},Time:0,DropItem:0b,HurtEntities:0b,Passengers:[{id:"falling_block",BlockState:{Name:"activator_rail"},Time:100,Passengers:[{id:"command_block_minecart",Command:"setblock ~2 ~-3 ~ command_block[facing=up]{Command:\\"execute positioned ~-2 ~3 ~ run kill @e[type=command_block_minecart,distance=..1]\\", auto:1b}"},{id:"command_block_minecart",Command:"setblock ~2 ~-2 ~ chain_command_block[facing=up]{Command:\\"fill ~ ~-1 ~ ~-3 ~2 ~ air\\", auto:1b}"},{id:"command_block_minecart",Command:"fill ~3 ~-3 ~1 ~%s ~-3 ~-1 blue_terracotta"},{id:"command_block_minecart",Command:"fill ~3 ~-1 ~1 ~%s ~-1 ~-1 blue_terracotta"},{id:"command_block_minecart",Command:"fill ~3 ~-2 ~1 ~%s ~-2 ~-1 green_stained_glass hollow"}' %(x, x, x) + result
+result = 'summon falling_block ~ ~1  ~ {BlockState:{Name:"stone"},Time:100,Passengers:[{id:"falling_block",BlockState:{Name:"sand"},Time:0,DropItem:0b,HurtEntities:0b,Passengers:[{id:"falling_block",BlockState:{Name:"redstone_block"},Time:100,Passengers:[{id:"falling_block",BlockState:{Name:"sand"},Time:0,DropItem:0b,HurtEntities:0b,Passengers:[{id:"falling_block",BlockState:{Name:"activator_rail"},Time:100,Passengers:[{id:"command_block_minecart",Command:"setblock ~2 ~-3 ~ command_block[facing=up]{Command:\\"execute positioned ~-2 ~3 ~ run kill @e[type=command_block_minecart,distance=..1]\\", auto:1b}"},{id:"command_block_minecart",Command:"setblock ~2 ~-2 ~ chain_command_block[facing=up]{Command:\\"fill ~ ~-1 ~ ~-3 ~2 ~ air\\", auto:1b}"},{id:"command_block_minecart",Command:"fill ~3 ~-3 ~1 ~%s ~-3 ~-1 blue_terracotta"},{id:"command_block_minecart",Command:"fill ~3 ~-1 ~1 ~%s ~-1 ~-1 blue_terracotta"},{id:"command_block_minecart",Command:"fill ~3 ~-2 ~1 ~%s ~-2 ~-1 green_stained_glass hollow"}' %(x, x, x) + result
 result += ']}]}]}]}]}'
 print(result)
                                                                                                                             
