@@ -3,16 +3,18 @@ commands = []
 inital_command = []
 
 def command_convert(string):
-    return string.replace('\\"', '\\\\\\\\"').replace('"', '\\\\\\"')
+    return string.replace('\\\\\\\\\\\\\\"', '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"').replace('\\\\\\"', '\\\\\\\\\\\\\\\\\\"').replace('\\"', '\\\\\\\\"').replace('"', '\\\\\\"')
 
 def inital_command_convert(string):
-    return string.replace('\\"', '\\\\"').replace('"', '\\"')
+    return string.replace('\\\\\\\\\\\\\\"', '\\\\\\\\\\\\\\\\\\\\\\"').replace('\\\\\\"', '\\\\\\\\\\"').replace('\\"', '\\\\"').replace('"', '\\"')
 
 inital_command.append(r'gamerule commandBlockOutput false')
 
 while True:
     commands.append(input())
-    if commands[-1].startswith('INIT:'):
+    if commands[-1] == '':
+        commands.remove(commands[-1])
+    elif commands[-1].startswith('INIT:'):
         if commands[-1][5] == ' ':
             inital_command.append(commands[-1][6:])
         else:
@@ -46,3 +48,4 @@ result = 'summon falling_block ~ ~1  ~ {BlockState:{Name:"stone"},Time:100,Passe
 result += ']}]}]}]}]}'
 print(result)
                                                                                                                             
+input()
